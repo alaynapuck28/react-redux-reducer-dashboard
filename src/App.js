@@ -2,21 +2,23 @@ import React from "react";
 import TopNav from "./components/TopNav";
 import PropTypes from "prop-types";
 import AreaChart from "./components/AreaChart";
-import Comments from "./components/Comments";
+import Comments from "./container/newCommentsContainer";
 import DonutChart from "./components/DonutChart";
-import Orders from "./components/Orders";
+import Orders from "./container/newOrdersContainer";
 import SideNav from "./components/SideNav";
-import Tasks from "./components/Tasks";
+import Tasks from "./container/newTasksContainers";
 import TasksPanel from "./components/TasksPanel";
-import Tickets from "./components/Tickets";
-import TransactionsPanel from "./components/TransactionsPanel";
-
+import Tickets from "./container/ticketsContainer";
+import TransactionsPanel from "./container/ordersContainers";
 
 function App(props) {
   return (
-    <div> 
+    <div>
       <div id="wrapper">
-        <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <nav
+          className="navbar navbar-inverse navbar-fixed-top"
+          role="navigation"
+        >
           <TopNav messages={props.messages} />
           <SideNav />
         </nav>
@@ -25,7 +27,7 @@ function App(props) {
             <div className="row">
               <div className="col-lg-12">
                 <h1 className="page-header">
-                    Dashboard <small>Statistics Overview</small>
+                  Dashboard <small>Statistics Overview</small>
                 </h1>
                 <ol className="breadcrumb">
                   <li className="active">
@@ -35,10 +37,10 @@ function App(props) {
               </div>
             </div>
             <div className="row">
-              <Comments newComments={props.newComments} />
-              <Tasks newTasks={props.newTasks} />
-              <Orders newOrders={props.newOrders} />
-              <Tickets tickets={props.tickets} />
+              <Comments />
+              <Tasks />
+              <Orders />
+              <Tickets />
             </div>
             <AreaChart />
             <div className="row">
@@ -47,14 +49,13 @@ function App(props) {
                 <TasksPanel tasks={props.tasks} />
               </div>
               <div className="col-lg-4">
-                <TransactionsPanel orders={props.orders} />
+                <TransactionsPanel />
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
   );
 }
 
